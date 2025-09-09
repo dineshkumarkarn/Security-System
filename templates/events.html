@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Detected Events</title>
+</head>
+<body>
+  <h1>Detected Events</h1>
+  <ul>
+    {% for event in events %}
+      <li>
+        <strong>{{ event.timestamp }}</strong> — {{ event.event_type }} on {{ event.camera.name }} [Priority: {{ event.priority }}]
+        <br> {{ event.description }}
+        {% if event.snapshot %}
+          <br><img src="{{ event.snapshot.url }}" width="200">
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+  <p><a href="{% url 'index' %}">Back to Dashboard</a></p>
+</body>
+</html>
